@@ -11,6 +11,8 @@ export const SEARCH_ISSUES = gql`
                 node {
                     ... on Issue {
                         title
+                        number
+                        state
                     }
                 }
             }

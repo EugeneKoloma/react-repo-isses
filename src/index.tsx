@@ -4,6 +4,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { client as apolloClient } from './graphql/client.graphql';
+import './index.css'
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
