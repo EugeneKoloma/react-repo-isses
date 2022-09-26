@@ -2,4 +2,9 @@ interface INode<T> {
     node: T
 }
 
-export type { INode }
+interface IPageInfo {
+    hasNextPage: boolean
+    endCursor: string
+}
+
+export type { INode, IPageInfo }

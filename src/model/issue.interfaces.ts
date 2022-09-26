@@ -1,43 +1,46 @@
-import { INode } from './common.interfaces';
+import { INode, IPageInfo } from './common.interfaces';
 
-enum ISSUE_STATE {
+export enum ISSUE_STATE {
     OPEN = 'OPEN',
     CLOSED = 'CLOSED'
 }
 
-interface IActor {
+export interface IActor {
     login: string
 }
 
-interface IComment {
+export interface IComment {
     author: IActor
     body: string
     createdAt: string
 }
 
-interface IIssue {
+export interface IIssue {
     title: string
     number: number
     state: ISSUE_STATE
 }
 
-interface IIssueExpanded extends IIssue {
+export interface IIssueExpanded extends IIssue {
     body: string
     createdAt: string
     author: IActor
     comments: {
+        pageInfo: IPageInfo
         edges: INode<IComment>[]
     }
 }
 
-interface IIssueResponseData {
+export interface IIssueResponseData {
     repository: {
         issue: IIssueExpanded
+        __typename: string
     }
 }
 
-interface IIssueVariables {
+export interface IIssueVariables {
+    organization?: string
+    repo?: string
     number: number
+    after?: string
 }
-
-export type { IIssue, IActor, IComment, IIssueExpanded, ISSUE_STATE, IIssueVariables, IIssueResponseData }

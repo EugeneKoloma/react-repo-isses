@@ -1,15 +1,11 @@
-import { INode } from './common.interfaces';
+import { INode, IPageInfo } from './common.interfaces';
 import { IIssue } from './issue.interfaces';
-
-interface IPageInfo {
-    hasNextPage: boolean
-    endCursor: string
-}
 
 interface ISearchResponse {
     search: {
         pageInfo: IPageInfo
         edges: INode<IIssue>[]
+        __typename: string
     }
 }
 
@@ -19,4 +15,4 @@ interface ISearchVariables {
     after?: string
 }
 
-export type { ISearchResponse, IPageInfo, ISearchVariables }
+export type { ISearchResponse, ISearchVariables }

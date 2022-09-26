@@ -1,12 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-const HomePage = () => {
+const RepositoryComponent = () => {
     return (
-        <div>
+        <>
             <Outlet/>
-        </div>
+        </>
     );
 };
 
-export default HomePage;
+export default RepositoryComponent;
