@@ -2,12 +2,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import useLazySearchIssues from '../../hooks/useLazySearchIssues';
 import Search from '../Search/Search.component';
 import IssuesListComponent from './IssuesList.component';
+import { issuesQueryGen } from '../../utils/queryGenerator';
+import { useParams } from 'react-router-dom';
 
 const IssuesComponent = () => {
     const { searchIssues, fetchMoreIssues, data, loading, error } = useLazySearchIssues(10)
     const [ endCursor, setEndCursor ] = useState<string | undefined>(undefined)
     const [ search, setSearch ] = useState<string>('')
     const [ canLoadMore, setCanLoadMore ] = useState<boolean>(false)
+
+    const { organization, repository } = useParams()
 
     const handleIssues = useCallback((value: string) => {
         setSearch(value)
@@ -19,11 +23,20 @@ const IssuesComponent = () => {
     }, [ search, endCursor ])
 
     useEffect(() => {
-        if (data) {
-            const pageInfo = data.search.pageInfo
-            setCanLoadMore(pageInfo.hasNextPage)
-            setEndCursor(pageInfo.endCursor)
-        }
+        searchIssues(issuesQueryGen({
+            searchValue: '',
+            repository,
+            organization,
+            isClosed: true,
+            isOpen: true
+        }))
+    }, []);
+
+
+    useEffect(() => {
+        const pageInfo = data?.search.pageInfo
+        setCanLoadMore(pageInfo?.hasNextPage!)
+        setEndCursor(pageInfo?.endCursor)
     }, [ data?.search.pageInfo.hasNextPage ])
 
     return (

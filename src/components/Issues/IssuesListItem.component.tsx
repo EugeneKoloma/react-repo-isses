@@ -17,7 +17,7 @@ const IssuesListItemComponent: FC<PropsIssuesItem> = ({ issue }) => {
 
     return (
         <li
-            className={'w-1/2 p-3 rounded-[20px] border shadow-md hover:scale-[105%] hover:cursor-pointer transition ease-in-out delay-150 mb-2'}
+            className={'w-full md:w-1/2 p-3 rounded-[20px] border shadow-md hover:scale-[105%] hover:cursor-pointer transition ease-in-out delay-150 md:mb-2'}
             onClick={handleItemClick}>
             <p
                 className={'text-[16px] title overflow-hidden text-ellipsis'}>

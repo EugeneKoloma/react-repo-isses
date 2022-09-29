@@ -19,7 +19,7 @@ const IssuesListComponent: FC<PropsIssuesList> = ({
 
     return (
         <>
-            <ul className={'flex flex-col items-center'}>
+            <ul className={'flex flex-col items-center px-2 md:px-0'}>
                 {data && data.map(({ node: issue }) => (
                     <IssuesListItemComponent key={issue.number} issue={issue}/>
                 ))}

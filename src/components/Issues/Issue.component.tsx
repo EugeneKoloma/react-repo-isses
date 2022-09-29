@@ -40,7 +40,7 @@ const IssueComponent = () => {
               <p className={'mx-auto text-center italic text-gray-600'}>Oops error occurred: {error.message}</p>}
             {issue && (
                 <>
-                    <h2 className={'text-[32px] text-center mb-3'}>{issue.title}</h2>
+                    <h2 className={'text-[24px] md:text-[32px] text-center mb-3'}>{issue.title}</h2>
                     <IssueCard issue={issue}/>
                     {issue.comments.edges.length > 0 && <CommentsListComponent
                       comments={issue.comments.edges}

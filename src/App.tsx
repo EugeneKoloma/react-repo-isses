@@ -6,19 +6,23 @@ import OrganizationPage from './pages/Organization.page';
 import RepositoryComponent from './components/Respositories/Repository.component';
 import IssuesComponent from './components/Issues/Issues.component';
 import IssueComponent from './components/Issues/Issue.component';
+import Header from './components/Header/Header.component';
 
 function App() {
     return (
-        <Routes>
-            <Route path={'*'} element={<NotFoundPage/>}/>
-            <Route index element={<HomePage/>}/>
-            <Route path={':organization'} element={<OrganizationPage/>}>
-                <Route path={':repository'} element={<RepositoryComponent/>}>
-                    <Route path={'issues'} element={<IssuesComponent/>}/>
-                    <Route path={'issue/:id'} element={<IssueComponent/>}/>
+        <>
+            <Header/>
+            <Routes>
+                <Route path={'*'} element={<NotFoundPage/>}/>
+                <Route index element={<HomePage/>}/>
+                <Route path={':organization'} element={<OrganizationPage/>}>
+                    <Route path={':repository'} element={<RepositoryComponent/>}>
+                        <Route path={'issues'} element={<IssuesComponent/>}/>
+                        <Route path={'issue/:id'} element={<IssueComponent/>}/>
+                    </Route>
                 </Route>
-            </Route>
-        </Routes>
+            </Routes>
+        </>
     );
 }
 
