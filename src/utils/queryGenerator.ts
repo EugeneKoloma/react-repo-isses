@@ -23,7 +23,5 @@ export const issuesQueryGen = (params: IIssueQuery): string => {
 
     const searchQuery = searchValue ? `\"${searchValue}\"` : '';
 
-    console.log(`repo:${organization}/${repository} ${SEARCH_QUERY_TEMPLATE} ${issueState} ${searchQuery}`)
-
     return `repo:${organization}/${repository} ${SEARCH_QUERY_TEMPLATE} ${issueState} ${searchQuery}`
 }
